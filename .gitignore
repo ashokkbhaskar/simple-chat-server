@@ -1,0 +1,11 @@
+﻿bin/
+obj/
+WebSharper/
+paket-files/
+*.user
+.vs/
+launchSettings.json
+appsettings.*.json
+packages/
+*.db
+lib/
