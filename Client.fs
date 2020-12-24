@@ -17,10 +17,17 @@ module Client =
                 | None -> async { return "" }
                 | Some input -> Server.DoSomething input
             )
+        let vLength = vReversed.Map(function
+            | "" -> "The server response is empty."
+            | s -> "The server response has " + (String.length s |> string) + " characters."
+        )
         div [] [
             Doc.Input [] rvInput
             Doc.Button "Send" [] submit.Trigger
             hr [] []
             h4 [attr.``class`` "text-muted"] [text "The server responded:"]
-            div [attr.``class`` "jumbotron"] [h1 [] [textView vReversed]]
+            div [attr.``class`` "jumbotron"] [
+                h1 [] [textView vReversed]
+                h2 [] [textView vLength]
+            ]
         ]
